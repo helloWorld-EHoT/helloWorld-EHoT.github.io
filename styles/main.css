@@ -1,0 +1,395 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {}
+
+body {
+  min-height: 100%;
+  background-color: #F9F9F9;
+}
+
+.clear {
+  clear: both;
+}
+
+input:focus {
+  outline: 0;
+}
+
+#wrapper {
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
+}
+
+/* Nav-menu */
+
+#nav-menu {
+  width: 270px;
+  height: 100%;
+  background-color: #2B2F3E;
+  position: fixed;
+  float: left;
+}
+
+#nav-menu > #main-logo {
+  height: 130px;
+  color: #565A69;
+  font-size: 25px;
+  padding-top: 26px;
+  padding-left: 26px;
+}
+
+#nav-menu > #main-logo > a {
+  text-decoration: none;
+  color: #565A69;
+  font-size: 25px;
+}
+
+#nav-menu > .menu-item{
+  font-size: 14px;
+  background-color: #FF2D5C;
+  background: -webkit-linear-gradient(#FF2D5C, #FF404B);
+  background: -o-linear-gradient(#FF2D5C, #FF404B);
+  background: -moz-linear-gradient(#FF2D5C, #FF404B);
+  background: linear-gradient(#FF2D5C, #FF404B);
+  color: #FFF;
+  padding: 20px 26px;
+}
+
+#nav-menu > .menu-item:hover{
+  cursor: pointer;
+  background-color: #FF2D5C;
+  background: -webkit-linear-gradient(#FF8288, #FF7190);
+  background: -o-linear-gradient(#FF8288, #FF7190);
+  background: -moz-linear-gradient(#FF8288, #FF7190);
+  background: linear-gradient(#FF8288, #FF7190);
+}
+
+/* Content params*/
+
+#container {
+  width: calc(100% - 336px);
+  background-color: #F9F9F9;
+  padding: 33px 33px 0 33px;
+  float: right;
+}
+
+.content {
+  color: #565A69;
+  box-shadow: 0 0 10px #A1A1A1;
+  background-color: #FFF;
+  padding: 30px 15px 0 30px;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.leftContent {
+  min-height: 522px;
+  width: calc(48% - 70px);
+  margin-right: 15px;
+}
+
+.rightContent {
+  min-height: 522px;
+  width: calc(54% - 70px);
+}
+
+/* Inner Content */
+
+.header {
+  font-size: 30px;
+  font-weight: 300;
+  padding-bottom: 15px;
+}
+
+.comments {
+  margin-right: 33px;
+  position: relative;
+  padding-bottom: 120px;
+}
+
+/* Input field */
+
+#inputField {
+  width: 63%;
+  height: 35px;
+  padding-left: 10px;
+  border: 1px solid #B3B3B3;
+  border-radius: 4px;
+  color: #757575;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
+/* Button "Add new" */
+
+#addNewName {
+  width: 32%;
+  height: 37px;
+  border: 0;
+  float: right;
+  border-radius: 5px;
+  background-color: #27CCC0;
+  color: #FFF;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+#addNewName:hover {
+  background-color: #66D5CE;
+  border: 1px solid #27CCC0;
+}
+
+#addNewName:active {
+  background-color: #27CCC0;
+}
+
+/* Names of Items */
+
+.addedItems {
+  display: block;
+  height: 42px;
+  margin: 15px 0;
+  border-bottom: 1px solid #B3B3B3;
+  position: relative;
+}
+
+.active:before {
+  content: " ";
+  position: absolute;
+  top: -15px;
+  left: -33px;
+  height: 60px;
+  width: 5px;
+  background-color: #FF2D5C;
+  background: -webkit-linear-gradient(#FF2D5C, #FF404B);
+  background: -o-linear-gradient(#FF2D5C, #FF404B);
+  background: -moz-linear-gradient(#FF2D5C, #FF404B);
+  background: linear-gradient(#FF2D5C, #FF404B);
+}
+
+.addedItems > p {
+  float: left;
+  margin-top: 6px;
+  vertical-align: middle;
+}
+
+.addedItems > p:hover {
+  cursor: pointer;
+  color: #000;
+}
+
+/* Notifications */
+
+.addedItems > p > span {
+  cursor: default;
+  background-color: #27CCC0;
+  color: #FFF;
+  padding: 0 7px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 800;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Delete buttons */
+
+.deleteBtns {
+  width: 24%;
+  height: 33px;
+  float: right;
+  color: #FF3159;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  vertical-align: middle;
+  background-color: transparent;
+  border: 1px solid #FF3159;
+  border-radius: 5px;
+}
+
+.deleteBtns:hover {
+  background-color: #FF2D5C;
+  background: -webkit-linear-gradient(#FF2D5C, #FF404B);
+  background: -o-linear-gradient(#FF2D5C, #FF404B);
+  background: -moz-linear-gradient(#FF2D5C, #FF404B);
+  background: linear-gradient(#FF2D5C, #FF404B);
+  color: #FFF;
+}
+
+.deleteBtns:active {
+  background-color: #FF426B;
+  background: -webkit-linear-gradient(#FF426B, #FF666E);
+  background: -o-linear-gradient(#FF426B, #FF666E);
+  background: -moz-linear-gradient(#FF426B, #FF666E);
+  background: linear-gradient(#FF426B, #FF666E);
+}
+
+/* Comments # */
+
+.addedComment {
+  padding-bottom: 25px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #B3B3B3;
+}
+
+.odd {
+  background-color: #FF8A00;
+  border: 1px solid #FEA642;
+}
+
+.even {
+  background-color: #47568C;
+  border: 1px solid #A2AAC5;
+}
+
+.colorOfComment {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 10px;
+}
+
+.textOfComment > p{
+  color: #666;
+  float: right;
+  display: block;
+  width: calc(99% - 60px);
+  text-align: left;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+/* Input for new Comments */
+
+#addableCommentsInput {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+}
+
+#colorOfInputComment {
+  width: 50px;
+  height: 50px;
+  background-color: #E6E6E6;
+  float: left;
+  margin-right: 10px;
+}
+
+#inputComm {
+  height: 70px;
+  width: calc(95% - 60px);
+  float: right;
+  display: block;
+  padding: 0 5px;
+  font-size: 12px;
+  resize: none;
+  border: 2px solid #E5E5E5;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Button for Send new Comment */
+
+#addNewComment {
+  width: 60px;
+  height: 30px;
+  margin: 10px 0 0 42%;
+  border: 0;
+  float: right;
+  border-radius: 5px;
+  background-color: #27CCC0;
+  color: #FFF;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+#addNewComment:hover {
+  background-color: #66D5CE;
+  border: 1px solid #27CCC0;
+}
+
+#addNewComment:active {
+  background-color: #27CCC0;
+}
+
+@media screen and (max-width: 1160px) {
+  #nav-menu {
+    width: 135px;
+  }
+
+  #container {
+    width: calc(100% - 168px);
+    background-color: #F9F9F9;
+    padding: 16px 16px 0 16px;
+    float: right;
+  }
+
+  .content {
+    width: calc(99% - 32px);
+    min-height: 222px;
+    padding: 15px 7px 0 30px;
+    margin: 0 20px 20px 0;
+    display: block;
+  }
+
+  .comments {
+    margin-right: 33px;
+    position: relative;
+  }
+
+  /* Input field */
+
+  #inputField {
+    width: 80%;
+  }
+
+  /* Button "Add new" */
+
+  #addNewName {
+    width: 16%;
+  }
+
+  .addedItems {
+    margin: 12px 0;
+  }
+
+  /* Delete buttons */
+
+  .deleteBtns {
+    width: 13%;
+  }
+
+  /* Comments #2 */
+
+  .addedComment {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+
+  #inputField {
+    width: calc(95% - 82px);
+  }
+
+  /* Button "Add new" */
+
+  #addNewName {
+    width: 82px;
+  }
+
+  /* Delete buttons */
+
+  .deleteBtns {
+    width: 66px;
+  }
+}

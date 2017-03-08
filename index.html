@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Dynamic Application</title>
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <script type="text/javascript" src="scripts/angular.min.js"></script>
+  <script type="text/javascript" src="scripts/app.js"></script>
+</head>
+<body>
+  <!-- WRAPPER -->
+  <div id="wrapper" data-ng-app="DynApp" data-ng-controller="SuperCtrl"><!--  -->
+    <!-- NAV MENU -->
+    <div id="nav-menu">
+      <div id="main-logo"><a href="#">Main</a></div>
+      <div id="overview" class="menu-item">Overview</div>
+    </div>
+    <div class="clear"></div>
+    <!-- END NAV MENU -->
+    <!-- CONTAINER -->
+    <div id="container" data-ng-init="items">
+      <div class="content leftContent">
+        <div>
+          <!-- ITEMS BLOCK -->
+          <div class="header">Items</div> <!-- Block`s name -->
+          <input id="inputField" type="text" data-ng-model="inputName" name="typeName" placeholder="Type name here..."></input>
+          <input id="addNewName" type="submit" name="Add" value="Add new" data-ng-click="addItemName()" data-ng-disabled="!inputName.length"></input>
+          <div id="addableItemsList">
+            <!-- NEW ITEMS -->
+            <div data-ng-click="[setActive(item)]" class="addedItems" data-ng-repeat="item in items track by $index" data-ng-class="{active : activeItem.id === item.id}">
+              <p>{{item.text}}  <span>{{item.comments.length}}</span></p>
+              <input class="deleteBtns" type="Submit" value="Delete" data-ng-click="deleteItem(item)"></input>
+            </div>
+            <!--  -->
+          </div>
+          <!-- END ITEMS -->
+        </div>
+      </div>
+      <!-- COMMENTS -->
+      <div class="content rightContent">
+        <div class="comments">  <!-- data-ng-model="indexNum" -->
+          <div class="header" data-ng-repeat="item in items track by $index" data-ng-if="item.active">Comments #{{$index + 1}}</div> <!-- Block`s name -->
+          <div id="addableCommentsList">
+            <!-- SHOW COMMENTS -->
+            <div class="addedComment" data-ng-repeat="comment in activeItem.comments track by $index">
+              <div class="colorOfComment" data-ng-class-odd="'odd'" data-ng-class-even="'even'"></div>
+              <div class="textOfComment">
+                <p>{{comment}}</p>
+              </div>
+              <div class="clear"></div>
+            </div>
+            <!-- ADD COMMENTS -->
+          </div>
+          <div class="clear"></div>
+          <div id="addableCommentsInput" data-ng-if="showCommentInput">
+            <div id="colorOfInputComment"></div>
+
+            <textarea name="commentInput" id="inputComm" data-ng-model="$parent.inputComment" autofocus></textarea>
+            <input id="addNewComment" type="submit" name="sendNewComment" value="Send" data-ng-click="addNewComm(activeItem)">
+
+            <div class="clear"></div>
+          </div>
+        </div>
+        <!-- END COMMENTS -->
+      </div>
+      <!-- END CONTAINER -->
+    </div>
+    <!-- END WRAPPER -->
+  </div>
+</body>
+</html>
