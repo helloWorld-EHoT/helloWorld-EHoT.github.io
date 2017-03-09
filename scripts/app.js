@@ -19,7 +19,6 @@ DynApp.controller("SuperCtrl", function($scope) {
 
   $scope.addItemName = function() {
     var text = $scope.inputName;
-
     $scope.items.push({
       id: $scope.items.length + 1,
       active: true,
@@ -27,18 +26,15 @@ DynApp.controller("SuperCtrl", function($scope) {
       comments: []
     });
     window.localStorage['items'] = JSON.stringify($scope.items);
-
     $scope.inputName = ""; //clear the input after adding
     $scope.setActive($scope.items[$scope.items.length-1]);
   }
 
   $scope.deleteItem = function(item) {
     var activeItemIndex = $scope.items.map(function(e) { return item.id == e.id; }).indexOf(true);
-    console.log('to delete', activeItemIndex);
     $scope.items.splice(activeItemIndex, 1);
     if ($scope.items.length) {
       $scope.setActive($scope.items[$scope.items.length-1]);
-      console.log($scope.activeItem);
     } else {
       $scope.showCommentInput = false;
       $scope.activeItem = {};
@@ -58,21 +54,15 @@ DynApp.controller("SuperCtrl", function($scope) {
     $scope.activeItem.active = true;
     $scope.showCommentInput = true;
     var activeItemIndex = $scope.items.map(function(e) { return item.id == e.id; }).indexOf(true);
-    console.log(activeItemIndex);
-    // $scope.commentItem = $scope.items[activeItemIndex];
     window.localStorage['items'] = JSON.stringify($scope.items);
-
   }
 
   $scope.addNewComm = function(activeItem) {
     if ($scope.inputComment) {
       var commentText = $scope.inputComment;
       var activeItemIndex = $scope.items.map(function(e) { return activeItem.id == e.id; }).indexOf(true);
-      console.log($scope.items);
-      console.log('activeItemIndex', activeItemIndex);
       $scope.items[activeItemIndex].comments.push(commentText);
       window.localStorage['items'] = JSON.stringify($scope.items);
-
       $scope.inputComment = "";
     }
   }
