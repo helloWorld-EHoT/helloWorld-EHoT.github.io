@@ -330,7 +330,7 @@ img {
 }
 
 .move:hover {
-	cursor: url(../images/wallCur.png), auto;
+	cursor: url(images/wallCur.png), auto;
 }
 
 .cell {
