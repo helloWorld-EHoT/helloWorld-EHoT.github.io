@@ -15,6 +15,7 @@ body {
 	background-attachment: fixed;
 	background-position: 210px 0;
 	background-size: 100vh 100vh;
+
 	/*font-family: 'Yanone Kaffeesatz', sans-serif;*/
 }
 
@@ -277,20 +278,20 @@ img {
 	width: calc(100vh);
 	height: calc(100vh);
 	background: url(../images/tex.jpg);
-	box-shadow: 0 0 42px #222;
+	box-shadow: 0 0 42px 10px #000;
 }
 
 .groundColor{
 	background-color: rgba(119,87,66, 0.8);
 	background-size: 100% 100%;
-	border-radius: 2px;
+	border-radius: 1px;
 	z-index: 3;
 }
 
 .wallcolor {
 	z-index: 4;
 	background-color: rgba(13,13,13, 0.9);
-	box-shadow: 0 0 10px #111;
+	box-shadow: 0 0 10px 2px #000;
 }
 
 .movWallcolor {
@@ -329,7 +330,7 @@ img {
 }
 
 .move:hover {
-	cursor: cell;
+	cursor: url(../images/wallCur.png), auto;
 }
 
 .cell {
@@ -365,4 +366,5 @@ img {
 	height: 175px;
 	text-align: center;
 	border-radius: 5px;
+	box-shadow: 0 0 12px #000;
 }
