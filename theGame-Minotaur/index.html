@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html ng-app="minotaurus">
+<head>
+	<meta charset="UTF-8">
+	<title>Minotaur: The game</title>
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+<body ng-controller="SetPlayersCtrl" ng-keyup="playerMove($event)">
+
+	<div id="wrapper">
+		<div id="setPlayers">
+			<div id="navMenu">
+				<div class="playerN" ng-show="playersArray.length < 4" ng-class="hiddenClass">
+					<div class="inputs">
+						<input id="inputPlayerName" type="text" name="playerName" ng-model="newPlayer" placeholder="Введите имя игрока" maxlength="20">
+						<input id="addButton" type="submit" name="addPlayer" value="Добавить игрока" ng-click="[addNewPlayer(), autoFocus()]" ng-disabled="!newPlayer.length">
+					</div>
+					<div class="changeColors">
+						<div class="colors" ng-class="prevColor" id="prevColor" ng-click="nextPrevColor('prev')"></div>
+						<div class="colors" ng-class="thatColor" id="thatColor" ng-model="availableColors[index]"></div>
+						<div class="colors" ng-class="nextColor" id="nextColor" ng-click="nextPrevColor('next')"></div>
+					</div>
+					
+				</div>
+				<div class="playerInfo" ng-class="playersArray[$index].color" ng-repeat="player in playersArray track by $index">
+					<div id="info">
+						<p>Игрок {{$index + 1}}</p>
+						<h4>{{player.name}}</h4>
+					</div>
+					<div id="moveInfo"><h3>{{player.moves}}</h3></div>
+				</div>
+				<div class="starGame" ng-class="hiddenClass" ng-show="playersArray.length > 1">
+					<input type="submit" ng-click="startGame()" name="startGame" value="Можно начинать игру!">
+				</div>
+				<div id="theDice" ng-click="dropTheDice()" ng-class="[theDiceValue, theDiceColor]" ng-show="gameStarted">
+					<div id="whiteDice" ng-show="theDiceValue == 1"></div>
+					<div id="blackDice" ng-show="theDiceValue == 2"></div>
+					<table cellpadding="0" cellspacing="0" ng-show="theDiceValue != 2 && theDiceValue != 1"><tbody>
+						<tr><td><img src="images/dot.png"></td><td></td><td><img src="images/dot.png" ng-show="theDiceValue != 3"></td></tr>
+						<tr><td><img src="images/dot.png" ng-show="theDiceValue == 6"></td><td><img src="images/dot.png" ng-show="theDiceValue != 4 && theDiceValue != 6"></td><td><img src="images/dot.png" ng-show="theDiceValue == 6"></td></tr>
+						<tr><td><img src="images/dot.png" ng-show="theDiceValue != 3"></td><td></td><td><img src="images/dot.png"></td></tr>
+					</tbody></table>
+				</div>
+				<div id="infoText">
+					<div class="rule" ng-if="infoMsg == 3">Для броска кубика жмите <span>"пробел"</span>.<br>Управление персонажем осуществляется <span>стрелками </span> на клавиатуре.</div>
+					<div class="rule" ng-if="infoMsg == 2"><span>Ходит Минотавр! </span>У него есть девять шагов. Отведи от себя опасность или напади на оппонента. Управление <span>стрелками</span></div>
+					<div class="rule" ng-if="infoMsg == 1">Двигай "серые" стены, чтоб помешать сопернику или уберечь себя от встречи с Минотавром. Два фрагмента (одна стена) за один ход. <span>Первое</span> нажатие на "серую" стену (выбор), <span>Второе</span> нажатие на проходе (размещение).</div>
+					<div class="rule"><span>Цель:</span><br>Достигни выхода из лабиринта в центре карты быстрее оппонентов. Атакуй их Минотавром и сам избегай с ним встречи, а нето придется начинать сначала.</div>
+				</div>
+			</div>
+			<div id="theEnd" ng-show="showMap">
+				<input type="submit" name="theEnd" value="Завершить игру" ng-click="newGame()">
+			</div>
+		</div>
+		<div class="clear"></div>
+		<div id="gamePlayGround">
+			<div id="alertMessage" ng-if="modalDialog === true"> 
+				<div class="userWin" ng-class="playersArray[activePlayer].color"><h1>{{playersArray[activePlayer].name}} выиграл!</h1><br>
+					<input type="submit" name="new-game" id="newGame" value="Сыграть еще" ng-click="newGame()">
+				</div>
+			</div>
+			<div id="map" ng-show="showMap">
+				<div id="{{$index + 1}}" class="cell" ng-class="[mapCoors[$index].color, {move: activeWall !== ''}]" ng-repeat="name in mapCoors track by $index" ng-click="moveWall(name.id - 1)">
+					<div class="playerBadge" ng-if="playersArray[0].stepPosition == mapCoors[$index].id" ng-class="[playersArray[0].color, {active: playersArray[0].active == true}]"></div>
+					<div class="playerBadge" ng-if="playersArray[1].stepPosition == mapCoors[$index].id" ng-class="[playersArray[1].color, {active: playersArray[1].active == true}]"></div>
+					<div class="playerBadge" ng-if="playersArray[2].stepPosition == mapCoors[$index].id" ng-class="[playersArray[2].color, {active: playersArray[2].active == true}]"></div>
+					<div class="playerBadge" ng-if="playersArray[3].stepPosition == mapCoors[$index].id" ng-class="[playersArray[3].color, {active: playersArray[3].active == true}]"></div>
+					<div class="playerBadge" ng-if="minotaur.stepPosition == mapCoors[$index].id" ng-class="[minotaur.color, {active: minotaur.active == true}]"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="scripts/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/main.js"></script>
+</body>
+</html>
