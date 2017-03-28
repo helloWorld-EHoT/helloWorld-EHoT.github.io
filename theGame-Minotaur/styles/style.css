@@ -11,6 +11,10 @@ body {
 	height: 100%;
 	font-family: 'Oswald', sans-serif;
 	user-select: none;
+	background-image: url(../images/Ornament18.jpg);
+	background-attachment: fixed;
+	background-position: 210px 0;
+	background-size: 100vh 100vh;
 	/*font-family: 'Yanone Kaffeesatz', sans-serif;*/
 }
 
@@ -234,6 +238,7 @@ img {
 #infoText {
 	width: 210px;
 	min-height: 42px;
+	background-color: rgba(42,42,42,0.42)
 }
 
 .rule {
@@ -267,6 +272,7 @@ img {
 	z-index: 1;
 	top: 0;
 	left: 210px;
+	opacity: 0.96;
 	display: block;
 	width: calc(100vh);
 	height: calc(100vh);
@@ -338,7 +344,7 @@ img {
 	clear: both;
 }
 
-/* win message */
+/**/
 
 #alertMessage {
 	width: 100vh;
