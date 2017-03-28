@@ -338,7 +338,7 @@ img {
 	clear: both;
 }
 
-/**/
+/* win message */
 
 #alertMessage {
 	width: 100vh;
@@ -352,11 +352,11 @@ img {
 
 .userWin {
 	opacity: 0.8;
-	margin: 40% auto;
-	padding-top: 25px;
+	margin: 38% auto;
+	padding-top: 24px;
 	vertical-align: middle;
-	width: 300px;
-	height: 150px;
+	width: 342px;
+	height: 175px;
 	text-align: center;
 	border-radius: 5px;
 }
