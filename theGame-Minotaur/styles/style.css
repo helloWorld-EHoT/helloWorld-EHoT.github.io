@@ -15,7 +15,7 @@ body {
 	background-attachment: fixed;
 	background-position: 210px 0;
 	background-size: 100vh 100vh;
-
+/* I want to take GL BaseCamp JavaScript course in Lviv*/
 	/*font-family: 'Yanone Kaffeesatz', sans-serif;*/
 }
 
@@ -27,6 +27,7 @@ body {
 	width: 210px;
 	position: absolute;
 	z-index: 2;
+	opacity: 0.9;
 }
 
 .playerN {
@@ -312,6 +313,26 @@ img {
 	z-index: 5;
 }
 
+.history {
+	margin: 27%;
+	width: 42%;
+	height: 42%;
+	border-radius: 50%;
+	border: 1px solid #000;
+	z-index: 5;
+	opacity: 0.5;
+}
+
+.preHistory {
+	margin: 35%;
+	width: 25%;
+	height: 25%;
+	border-radius: 50%;
+	border: 1px solid #000;
+	z-index: 5;
+	opacity: 0.3;
+}
+
 @keyframes activeSelect {
 	0%   {border-radius: 50%;}
 	50%  {border-radius: 42%;}
@@ -330,7 +351,7 @@ img {
 }
 
 .move:hover {
-	cursor: url(images/wallCur.png), auto;
+	cursor: url(../images/wallCur.png), auto;
 }
 
 .cell {
