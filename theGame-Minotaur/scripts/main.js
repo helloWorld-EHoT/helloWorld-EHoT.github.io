@@ -270,12 +270,14 @@ $scope.movePlayer = function(step, vec) {
     $scope.minotaur.active = true;
     if ($scope.minotaurMoves < 1) {
       $scope.minotaurMoves = "";
-    } else if ($scope.minotaurMoves > 0) {
+    }
+
       if (vec == "+") {
         var nextStep = $scope.minotaur.stepPosition + step;
       } else if (vec == "-") {
         var nextStep = $scope.minotaur.stepPosition - step;
       }
+    if ($scope.minotaurMoves > 0) {
       if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
         $scope.stepsHistory.pop();
         $scope.minotaur.stepPosition = nextStep;
@@ -307,6 +309,13 @@ $scope.movePlayer = function(step, vec) {
         $scope.minotaur.active = false;
         $scope.playersArray[3].stepPosition = $scope.playersArray[3].start;
         $scope.playersArray[$scope.activePlayer].active = false;
+      }
+    } else {
+        if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
+        $scope.stepsHistory.pop();
+        $scope.minotaur.stepPosition = nextStep;
+        $scope.minotaurMoves = $scope.minotaurMoves + 1;
+        $scope.playersArray[$scope.activePlayer].moves = $scope.turns;
       }
     }
   } else {
