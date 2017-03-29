@@ -1,1 +1,4 @@
-version 0.0.1 Alpha
+theGame: Minotaur
+version 0.0.2 Alpha
+
+powered by AngularJS
