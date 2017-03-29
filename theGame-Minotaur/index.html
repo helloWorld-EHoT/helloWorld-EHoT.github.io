@@ -62,6 +62,8 @@
 			</div>
 			<div id="map" ng-show="showMap">
 				<div id="{{$index + 1}}" class="cell" ng-class="[mapCoors[$index].color, {move: activeWall !== ''}]" ng-repeat="name in mapCoors track by $index" ng-click="moveWall(name.id - 1)">
+					<div class="preHistory" ng-if="stepsHistory[stepsHistory.length - 2] == mapCoors[$index].id" ng-class="[playersArray[activePlayer].color]"></div>
+					<div class="history" ng-if="stepsHistory[stepsHistory.length - 1] == mapCoors[$index].id" ng-class="[playersArray[activePlayer].color]"></div>
 					<div class="playerBadge" ng-if="playersArray[0].stepPosition == mapCoors[$index].id" ng-class="[playersArray[0].color, {active: playersArray[0].active == true}]"></div>
 					<div class="playerBadge" ng-if="playersArray[1].stepPosition == mapCoors[$index].id" ng-class="[playersArray[1].color, {active: playersArray[1].active == true}]"></div>
 					<div class="playerBadge" ng-if="playersArray[2].stepPosition == mapCoors[$index].id" ng-class="[playersArray[2].color, {active: playersArray[2].active == true}]"></div>
