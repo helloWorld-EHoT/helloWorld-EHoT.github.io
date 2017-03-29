@@ -267,22 +267,23 @@ $scope.movePlayer = function(step, vec) {
   }
 
   if (turns === "M") {
-    $scope.minotaur.active = true;
+    
     if ($scope.minotaurMoves < 1) {
-      $scope.minotaurMoves = "";
+      $scope.minotaurMoves = 0;
     }
 
-      if (vec == "+") {
-        var nextStep = $scope.minotaur.stepPosition + step;
-      } else if (vec == "-") {
-        var nextStep = $scope.minotaur.stepPosition - step;
-      }
+    if (vec == "+") {
+      var nextStep = $scope.minotaur.stepPosition + step;
+    } else if (vec == "-") {
+      var nextStep = $scope.minotaur.stepPosition - step;
+    }
+
     if ($scope.minotaurMoves > 0) {
       if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
         $scope.stepsHistory.pop();
         $scope.minotaur.stepPosition = nextStep;
         $scope.minotaurMoves = $scope.minotaurMoves + 1;
-        $scope.playersArray[$scope.activePlayer].moves = $scope.turns;
+        $scope.minotaur.moves = $scope.minotaurMoves;
       } else if ($scope.mapCoors[nextStep - 1].drop === true) {
         $scope.stepsHistory.push($scope.minotaur.stepPosition);
         $scope.minotaur.stepPosition = nextStep;
@@ -310,12 +311,12 @@ $scope.movePlayer = function(step, vec) {
         $scope.playersArray[3].stepPosition = $scope.playersArray[3].start;
         $scope.playersArray[$scope.activePlayer].active = false;
       }
-    } else {
-        if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
+    } else if ($scope.minotaurMoves == 0) {
+      if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
         $scope.stepsHistory.pop();
         $scope.minotaur.stepPosition = nextStep;
         $scope.minotaurMoves = $scope.minotaurMoves + 1;
-        $scope.playersArray[$scope.activePlayer].moves = $scope.turns;
+        $scope.minotaur.moves = $scope.turns;
       }
     }
   } else {
@@ -345,7 +346,7 @@ $scope.movePlayer = function(step, vec) {
       if ($scope.playersArray[$scope.activePlayer].stepPosition == $scope.playersArray[$scope.activePlayer].finish) {
         $scope.endGame($scope.activePlayer.name);
       }
-    } else {
+    } else if ($scope.turns == 0) {
       if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
         $scope.stepsHistory.pop();
         $scope.playersArray[$scope.activePlayer].stepPosition = nextStep;
@@ -388,6 +389,7 @@ $scope.dropTheDice = function() {
     $scope.minotaur.active = false;
   } else if ($scope.theDiceValue == 2) {
     $scope.turns = "M";
+    $scope.minotaur.active = true;
     $scope.minotaurMoves = 9;
     $scope.infoMsg = 2;
     $scope.nextPlayer();
