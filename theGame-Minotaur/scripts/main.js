@@ -3,16 +3,8 @@ var minotaurus = angular.module("minotaurus", []);
 minotaurus.controller("SetPlayersCtrl", function($scope) {
   $scope.availableColors = ["red", "green", "blue" , "yellow", "purple", "grey", "white", "black"];
   $scope.playersArray = [];
-  $scope.minotaur = {
-    name: "Minotaur",
-    color: "minotaurColor",
-    stepPosition: 465,
-    endPosition: "",
-    start: 465,
-    finish: [0, 1, 2, 3],
-    active: false
-  };
   $scope.minotaurMoves;
+  $scope.stepsHistory = [];
   $scope.activeWall = "";
   $scope.showMap = false;
   $scope.mapCoors = [];
@@ -25,6 +17,15 @@ minotaurus.controller("SetPlayersCtrl", function($scope) {
   $scope.turns;
   $scope.attempt = 0;
   $scope.infoMsg = 0;
+  $scope.minotaur = {
+    name: "Minotaur",
+    color: "minotaurColor",
+    stepPosition: 465,
+    endPosition: "",
+    start: 465,
+    finish: [0, 1, 2, 3],
+    active: false
+  };
 
   $scope.coors = [
   7,7,7,7,7,7,7,7,7,7,7,7,4,4,7,7,7,7,4,4,7,7,7,7,7,7,7,7,7,7,7,7,
@@ -137,10 +138,10 @@ minotaurus.controller("SetPlayersCtrl", function($scope) {
 
   $scope.drawMap = function() {
     var emptyColor = "empty";
-   $scope.showMap = true;
-   $scope.hiddenClass = "hidden";
-   var coors = $scope.coors;
-   for (var i = 0; i < coors.length; i++) {
+    $scope.showMap = true;
+    $scope.hiddenClass = "hidden";
+    var coors = $scope.coors;
+    for (var i = 0; i < coors.length; i++) {
      if (coors[i] == 7) {
       $scope.mapCoors.push({
         id: $scope.mapCoors.length + 1,
@@ -246,21 +247,25 @@ $scope.playerMove = function(event) {
       $scope.movePlayer(32, "-");
     } else if (event.keyCode == "40") {
       $scope.movePlayer(32, "+");
-   } else if (event.keyCode == "37") {
-    $scope.movePlayer(1, "-");
-   } else if (event.keyCode == "39") {
-    $scope.movePlayer(1, "+");
-  } else if (event.keyCode == "32") {
-    console.log("space");
-    $scope.dropTheDice();
-  } else {
-    console.log(event.keyCode);
+    } else if (event.keyCode == "37") {
+      $scope.movePlayer(1, "-");
+    } else if (event.keyCode == "39") {
+      $scope.movePlayer(1, "+");
+    } else if (event.keyCode == "32") {
+      console.log("space");
+      $scope.dropTheDice();
+    } else {
+      console.log(event.keyCode);
+    }
   }
-}
 }
 
 $scope.movePlayer = function(step, vec) {
   var turns = $scope.turns;
+  if ($scope.stepsHistory == []) {
+    $scope.stepsHistory = [$scope.playersArray[$scope.activePlayer].stepPosition];
+  }
+
   if (turns === "M") {
     $scope.minotaur.active = true;
     if ($scope.minotaurMoves < 1) {
@@ -271,7 +276,13 @@ $scope.movePlayer = function(step, vec) {
       } else if (vec == "-") {
         var nextStep = $scope.minotaur.stepPosition - step;
       }
-      if ($scope.mapCoors[nextStep - 1].drop === true) {
+      if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
+        $scope.stepsHistory.pop();
+        $scope.minotaur.stepPosition = nextStep;
+        $scope.minotaurMoves = $scope.minotaurMoves + 1;
+        $scope.playersArray[$scope.activePlayer].moves = $scope.turns;
+      } else if ($scope.mapCoors[nextStep - 1].drop === true) {
+        $scope.stepsHistory.push($scope.minotaur.stepPosition);
         $scope.minotaur.stepPosition = nextStep;
         $scope.minotaurMoves = $scope.minotaurMoves - 1;
         $scope.minotaur.moves = $scope.minotaurMoves;
@@ -302,14 +313,22 @@ $scope.movePlayer = function(step, vec) {
     $scope.minotaur.active = false;
     if ($scope.turns < 1) {
       $scope.playersArray[$scope.activePlayer].moves = "-";
-    } else if ($scope.turns > 0) {
-      if (vec == "+") {
-        var nextStep = $scope.playersArray[$scope.activePlayer].stepPosition + step;
-      } else if (vec == "-") {
-        var nextStep = $scope.playersArray[$scope.activePlayer].stepPosition - step;
-      }
+    }
 
-      if ($scope.mapCoors[nextStep - 1].drop === true) {
+    if (vec == "+") {
+      var nextStep = $scope.playersArray[$scope.activePlayer].stepPosition + step;
+    } else if (vec == "-") {
+      var nextStep = $scope.playersArray[$scope.activePlayer].stepPosition - step;
+    }
+
+    if ($scope.turns > 0) {
+      if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
+        $scope.stepsHistory.pop();
+        $scope.playersArray[$scope.activePlayer].stepPosition = nextStep;
+        $scope.turns = $scope.turns + 1;
+        $scope.playersArray[$scope.activePlayer].moves = $scope.turns;
+      } else if ($scope.mapCoors[nextStep - 1].drop === true) {
+        $scope.stepsHistory.push($scope.playersArray[$scope.activePlayer].stepPosition);
         $scope.playersArray[$scope.activePlayer].stepPosition = nextStep;
         $scope.turns = $scope.turns - 1;
         $scope.playersArray[$scope.activePlayer].moves = $scope.turns;
@@ -317,12 +336,18 @@ $scope.movePlayer = function(step, vec) {
       if ($scope.playersArray[$scope.activePlayer].stepPosition == $scope.playersArray[$scope.activePlayer].finish) {
         $scope.endGame($scope.activePlayer.name);
       }
+    } else {
+      if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
+        $scope.stepsHistory.pop();
+        $scope.playersArray[$scope.activePlayer].stepPosition = nextStep;
+        $scope.turns = $scope.turns + 1;
+        $scope.playersArray[$scope.activePlayer].moves = $scope.turns;
+      }
     }
   }
 }
 
 $scope.dropTheDice = function() {
-
   $scope.minotaurMoves = 0;
   $scope.theDiceValue = Math.floor(Math.random() * 7);
   if ($scope.theDiceValue == 0) {
@@ -358,6 +383,7 @@ $scope.dropTheDice = function() {
     $scope.infoMsg = 2;
     $scope.nextPlayer();
   }
+  $scope.stepsHistory = [];
   console.log($scope.playersArray);
 }
 
