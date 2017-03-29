@@ -368,6 +368,7 @@ $scope.movePlayer = function(step, vec) {
 
 $scope.dropTheDice = function() {
   $timeout.cancel();
+  $scope.theDiceValue = 0;
   document.getElementById("dropDice").play();
   $timeout($scope.timerFunc, 666);
 }
