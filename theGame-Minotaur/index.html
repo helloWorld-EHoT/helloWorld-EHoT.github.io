@@ -36,7 +36,7 @@
 				<div id="theDice" ng-click="dropTheDice()" ng-class="[theDiceValue, theDiceColor]" ng-show="gameStarted">
 					<div id="whiteDice" ng-show="theDiceValue == 1"></div>
 					<div id="blackDice" ng-show="theDiceValue == 2"></div>
-					<table cellpadding="0" cellspacing="0" ng-show="theDiceValue != 2 && theDiceValue != 1"><tbody>
+					<table cellpadding="0" cellspacing="0" ng-show="theDiceValue != 2 && theDiceValue != 1" ng-if="theDiceValue != 0"><tbody>
 						<tr><td><img src="images/dot.png"></td><td></td><td><img src="images/dot.png" ng-show="theDiceValue != 3"></td></tr>
 						<tr><td><img src="images/dot.png" ng-show="theDiceValue == 6"></td><td><img src="images/dot.png" ng-show="theDiceValue != 4 && theDiceValue != 6"></td><td><img src="images/dot.png" ng-show="theDiceValue == 6"></td></tr>
 						<tr><td><img src="images/dot.png" ng-show="theDiceValue != 3"></td><td></td><td><img src="images/dot.png"></td></tr>
@@ -49,11 +49,11 @@
 					<div class="rule"><span>Цель:</span><br>Достигни выхода из лабиринта в центре карты быстрее оппонентов. Атакуй их Минотавром и сам избегай с ним встречи, а нето придется начинать сначала.</div>
 				</div>
 				<div id="audio">
-					<audio id="dropDice" src="sounds/dropD.mp3"></audio>
-					<audio id="step" src="sounds/step.mp3"></audio>
-					<audio id="minTurn" src="sounds/MinTurn.mp3"></audio>
-					<audio id="putWall" src="sounds/putWall.mp3"></audio>
-					<audio id="dropWall" src="sounds/dropWall.mp3"></audio>
+					<audio id="dropDice" src="sounds/dropDice.ogg"></audio>
+					<audio id="step" src="sounds/step.ogg"></audio>
+					<audio id="minTurn" src="sounds/MinoTurn.ogg"></audio>
+					<audio id="putWall" src="sounds/putWall.ogg"></audio>
+					<audio id="dropWall" src="sounds/dropWall.ogg"></audio>
 				</div>
 			</div>
 			<div id="theEnd" ng-show="showMap">
