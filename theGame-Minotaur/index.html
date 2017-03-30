@@ -25,7 +25,13 @@
 				</div>
 				<div class="playerInfo" ng-class="playersArray[$index].color" ng-repeat="player in playersArray track by $index">
 					<div id="info">
-						<p>Игрок {{$index + 1}}</p>
+						<div class="line">
+							<p>Игрок {{$index + 1}}</p>
+							<div class="genders" ng-hide="player.gender !== ' '">
+							<input class="gender" type="submit" name="male" value="М" ng-click="player.gender = ''">
+							<input class="gender" type="submit" name="female" value="Ж"  ng-click="player.gender = 'a'">
+							</div>
+						</div>
 						<h4>{{player.name}}</h4>
 					</div>
 					<div id="moveInfo"><h3>{{player.moves}}</h3></div>
@@ -51,7 +57,7 @@
 				<div id="audio">
 					<audio id="dropDice" src="sounds/dropDice.ogg"></audio>
 					<audio id="step" src="sounds/step.ogg"></audio>
-					<audio id="minTurn" src="sounds/minoTurn.ogg"></audio>
+					<audio id="minTurn" src="sounds/MinoTurn.ogg"></audio>
 					<audio id="putWall" src="sounds/putWall.ogg"></audio>
 					<audio id="dropWall" src="sounds/dropWall.ogg"></audio>
 				</div>
@@ -63,7 +69,7 @@
 		<div class="clear"></div>
 		<div id="gamePlayGround">
 			<div id="alertMessage" ng-if="modalDialog === true"> 
-				<div class="userWin" ng-class="playersArray[activePlayer].color"><h1>{{playersArray[activePlayer].name}} выиграл!</h1><br>
+				<div class="userWin" ng-class="playersArray[activePlayer].color"><h1>{{playersArray[activePlayer].name}} выиграл{{playersArray[activePlayer].gender}}!</h1><br>
 					<input type="submit" name="new-game" id="newGame" value="Сыграть еще" ng-click="newGame()">
 				</div>
 			</div>
