@@ -15,8 +15,6 @@ body {
 	background-attachment: fixed;
 	background-position: 210px 0;
 	background-size: 100vh 100vh;
-/* I want to take GL BaseCamp JavaScript course in Lviv*/
-	/*font-family: 'Yanone Kaffeesatz', sans-serif;*/
 }
 
 .clear {
@@ -325,14 +323,37 @@ img {
 	box-shadow: 0 0 5px #222;
 }
 
+.active {
+	margin: 2%;
+	width: 80%;
+	height: 80%;
+	box-shadow: 0 0 6px #FF5500;
+	box-shadow: inset 2px 2px 8px #222;
+	border-color: #FF6600;
+	animation: activeSelect 2s infinite;
+}
+
 .playerBadge {
-	margin: 16%;
+	margin: 14%;
 	width: 66%;
 	height: 66%;
 	box-shadow: 0 0 6px #424242;
 	border-radius: 50%;
 	border: 1px solid #000;
 	z-index: 5;
+}
+
+.minotaurBadge {
+	text-align: center;
+	
+	font-family: Verdana;
+	color: #666;
+	width: 90%;
+	height: 90%;
+	box-shadow: 0 0 12px 2px #000;
+	border-radius: 50%;
+	border: 1px solid #424242;
+	z-index: 6;
 }
 
 .history {
@@ -368,18 +389,9 @@ img {
 @keyframes activeSelect {
 	0%   {border-radius: 50%;}
 	50%  {border-radius: 42%;}
-	75% {background-color: #EEE;}
+	70%  {border-radius: 25%;}
+	75% {background-color: #CCC;}
 	100% {border-radius: 50%;}
-}
-
-.active {
-	margin: 8%;
-	width: 80%;
-	height: 80%;
-	box-shadow: 0 0 6px #FF5500;
-	box-shadow: inset 2px 2px 8px #222;
-	border-color: #FF6600;
-	animation: activeSelect 2s infinite;
 }
 
 .move:hover {
