@@ -22,6 +22,7 @@ minotaurus.controller("SetPlayersCtrl", function($scope, $timeout) {
     color: "minotaurColor",
     stepPosition: 465,
     endPosition: "",
+    drop: false,
     start: 465,
     finish: [0, 1, 2, 3],
     active: false
@@ -63,6 +64,7 @@ minotaurus.controller("SetPlayersCtrl", function($scope, $timeout) {
   7,7,7,7,7,7,7,7,7,7,7,7,4,4,7,7,7,7,4,4,7,7,7,7,7,7,7,7,7,7,7,7,
   ];
 
+  //$scope.coors = mapCoors2;
 
   $scope.nextPrevColor = function(what) {
     if (what == "next") {
@@ -175,7 +177,8 @@ minotaurus.controller("SetPlayersCtrl", function($scope, $timeout) {
         startPosition: "34",
         finishPosition: "496",
         color: $scope.playersArray[0].color,
-        drop: true
+        drop: true,
+        moveWallDrop: false
       });
     } else if (coors[i] == 2) {
       $scope.mapCoors.push({
@@ -183,7 +186,8 @@ minotaurus.controller("SetPlayersCtrl", function($scope, $timeout) {
         startPosition: "63",
         finishPosition: "497",
         color: $scope.playersArray[1].color,
-        drop: true
+        drop: true,
+        moveWallDrop: false
       });
     } else if (coors[i] == 3) {
       $scope.mapCoors.push({
@@ -191,7 +195,8 @@ minotaurus.controller("SetPlayersCtrl", function($scope, $timeout) {
         startPosition: "962",
         finishPosition: "528",
         color: emptyColor,
-        drop: true
+        drop: true,
+        moveWallDrop: false
       });
     } else if (coors[i] == 5) {
       $scope.mapCoors.push({
@@ -199,7 +204,8 @@ minotaurus.controller("SetPlayersCtrl", function($scope, $timeout) {
         startPosition: "991",
         finishPosition: "529",
         color: emptyColor,
-        drop: true
+        drop: true,
+        moveWallDrop: false
       });
     }
   }
@@ -225,7 +231,9 @@ $scope.moveWall = function(place) {
       console.log("select error!");
     }
   } else {
-    if ($scope.mapCoors[place].drop == true) {
+    if ($scope.mapCoors[place].moveWallDrop == false){
+      console.log("NoWay to place!");
+    } else if ($scope.mapCoors[place].drop == true) {
       var id = $scope.activeWall.id - 1;
       $scope.mapCoors[place].name = $scope.activeWall.name;
       $scope.mapCoors[place].color = $scope.activeWall.color;
