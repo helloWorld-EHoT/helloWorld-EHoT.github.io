@@ -261,6 +261,14 @@ $scope.playerMove = function(event) {
     } else {
       console.log(event.keyCode);
     }
+  } else {
+    if (event.keyCode == "13") {
+      if ($scope.newPlayer.length) {
+        $scope.addNewPlayer();
+        $scope.newPlayer.focus();
+        
+      }
+    }
   }
 }
 
@@ -379,45 +387,45 @@ $scope.dropTheDice = function() {
 }
 
 $scope.timerFunc = function() {
-    $scope.minotaurMoves = 0;
-    $scope.theDiceValue = Math.floor(Math.random() * 7);
-    if ($scope.theDiceValue == 0) {
-      $scope.dropTheDice();
-    } else if ($scope.theDiceValue == 3) {
-      $scope.turns = $scope.theDiceValue;
-      $scope.infoMsg = 3;
-      $scope.nextPlayer();
-      $scope.minotaur.active = false;
-    } else if ($scope.theDiceValue == 4) {
-      $scope.turns = $scope.theDiceValue;
-      $scope.infoMsg = 3;
-      $scope.nextPlayer();
-      $scope.minotaur.active = false;
-    } else if ($scope.theDiceValue == 5) {
-      $scope.turns = $scope.theDiceValue;
-      $scope.infoMsg = 3;
-      $scope.nextPlayer();
-      $scope.minotaur.active = false;
-    } else if ($scope.theDiceValue == 6) {
-      $scope.turns = $scope.theDiceValue;
-      $scope.infoMsg = 3;
-      $scope.nextPlayer();
-      $scope.minotaur.active = false;
-    } else if ($scope.theDiceValue == 1) {
-      $scope.turns = "W";
-      $scope.nextPlayer();
-      $scope.infoMsg = 1;
-      $scope.minotaur.active = false;
-    } else if ($scope.theDiceValue == 2) {
-      $scope.turns = "M";
-      $scope.minotaur.active = true;
-      $scope.minotaurMoves = 9;
-      $scope.infoMsg = 2;
-      $scope.nextPlayer();
-      document.getElementById("minTurn").play();
-    }
-    $scope.stepsHistory = [];
+  $scope.minotaurMoves = 0;
+  $scope.theDiceValue = Math.floor(Math.random() * 7);
+  if ($scope.theDiceValue == 0) {
+    $scope.dropTheDice();
+  } else if ($scope.theDiceValue == 3) {
+    $scope.turns = $scope.theDiceValue;
+    $scope.infoMsg = 3;
+    $scope.nextPlayer();
+    $scope.minotaur.active = false;
+  } else if ($scope.theDiceValue == 4) {
+    $scope.turns = $scope.theDiceValue;
+    $scope.infoMsg = 3;
+    $scope.nextPlayer();
+    $scope.minotaur.active = false;
+  } else if ($scope.theDiceValue == 5) {
+    $scope.turns = $scope.theDiceValue;
+    $scope.infoMsg = 3;
+    $scope.nextPlayer();
+    $scope.minotaur.active = false;
+  } else if ($scope.theDiceValue == 6) {
+    $scope.turns = $scope.theDiceValue;
+    $scope.infoMsg = 3;
+    $scope.nextPlayer();
+    $scope.minotaur.active = false;
+  } else if ($scope.theDiceValue == 1) {
+    $scope.turns = "W";
+    $scope.nextPlayer();
+    $scope.infoMsg = 1;
+    $scope.minotaur.active = false;
+  } else if ($scope.theDiceValue == 2) {
+    $scope.turns = "M";
+    $scope.minotaur.active = true;
+    $scope.minotaurMoves = 9;
+    $scope.infoMsg = 2;
+    $scope.nextPlayer();
+    document.getElementById("minTurn").play();
   }
+  $scope.stepsHistory = [];
+}
 
 $scope.nextPlayer = function() {
   var attempt = $scope.attempt;
