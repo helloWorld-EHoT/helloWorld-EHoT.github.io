@@ -175,7 +175,7 @@ input {
 }
 
 .gender {
-	opacity: 0.8;
+	opacity: 0.75;
 	vertical-align: top;
 	margin-left: 8px;
 	height: 18px;
@@ -342,7 +342,7 @@ img {
 	border-radius: 50%;
 	border: 1px solid #000;
 	z-index: 5;
-	opacity: 0.5;
+	opacity: 0.6;
 }
 
 .preHistory {
@@ -352,7 +352,17 @@ img {
 	border-radius: 50%;
 	border: 1px solid #000;
 	z-index: 5;
-	opacity: 0.3;
+	opacity: 0.5;
+}
+
+.prePreHistory {
+	margin: 38%;
+	width: 20%;
+	height: 20%;
+	border-radius: 50%;
+	border: 1px solid #000;
+	z-index: 5;
+	opacity: 0.42;
 }
 
 @keyframes activeSelect {
