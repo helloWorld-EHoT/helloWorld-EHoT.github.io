@@ -28,6 +28,7 @@ minotaurus.controller("SetPlayersCtrl", function($scope, $timeout) {
     active: false
   };
   $scope.stepSound = document.getElementById("step");
+  $scope.minoStepSound = document.getElementById("minoStep");
 
   $scope.coors = [
   7,7,7,7,7,7,7,7,7,7,7,7,4,4,7,7,7,7,4,4,7,7,7,7,7,7,7,7,7,7,7,7,
@@ -132,7 +133,6 @@ minotaurus.controller("SetPlayersCtrl", function($scope, $timeout) {
   $scope.endGame = function() {
     $scope.gameStarted = false;
     $scope.modalDialog = true;
-    console.log($scope.playersArray[$scope.activePlayer].name);
   }
 
   $scope.newGame = function() {
@@ -264,7 +264,6 @@ $scope.playerMove = function(event) {
     } else if (event.keyCode == "39") {
       $scope.movePlayer(1, "+");
     } else if (event.keyCode == "32") {
-      console.log("space");
       $scope.dropTheDice();
     } else {
       console.log(event.keyCode);
@@ -299,7 +298,7 @@ $scope.movePlayer = function(step, vec) {
     }
 
     if ($scope.minotaurMoves > 0) {
-      $scope.stepSound.play();
+      $scope.minoStepSound.play();
       if ($scope.stepsHistory[$scope.stepsHistory.length - 1] == nextStep) {
         $scope.stepsHistory.pop();
         $scope.minotaur.stepPosition = nextStep;
@@ -343,7 +342,7 @@ $scope.movePlayer = function(step, vec) {
         $scope.minotaur.stepPosition = nextStep;
         $scope.minotaurMoves = $scope.minotaurMoves + 1;
         $scope.minotaur.moves = $scope.turns;
-        $scope.stepSound.play();
+        $scope.minoStepSound.play();
       }
     }
   } else {
