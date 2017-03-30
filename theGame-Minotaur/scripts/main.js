@@ -103,6 +103,7 @@ minotaurus.controller("SetPlayersCtrl", function($scope, $timeout) {
     $scope.playersArray.push({
       id: playerId,
       name: newPlayer,
+      gender: " ",
       color: $scope.availableColors[$scope.index],
       moves: "-",
       stepPosition: startPosition,
@@ -299,21 +300,25 @@ $scope.movePlayer = function(step, vec) {
         $scope.minotaur.active = false;
         $scope.playersArray[0].stepPosition = $scope.playersArray[0].start;
         $scope.playersArray[$scope.activePlayer].active = false;
+        $scope.minotaurMoves = 0;
       } else if ($scope.minotaur.stepPosition == $scope.playersArray[1].stepPosition) {
         $scope.minotaur.stepPosition =  $scope.minotaur.start;
         $scope.minotaur.active = false;
         $scope.playersArray[1].stepPosition = $scope.playersArray[1].start;
         $scope.playersArray[$scope.activePlayer].active = false;
+        $scope.minotaurMoves = 0;
       } else if ($scope.minotaur.stepPosition == $scope.playersArray[2].stepPosition) {
         $scope.minotaur.stepPosition =  $scope.minotaur.start;
         $scope.minotaur.active = false;
         $scope.playersArray[2].stepPosition = $scope.playersArray[2].start;
         $scope.playersArray[$scope.activePlayer].active = false;
+        $scope.minotaurMoves = 0;
       } else if ($scope.minotaur.stepPosition == $scope.playersArray[3].stepPosition) {
         $scope.minotaur.stepPosition =  $scope.minotaur.start;
         $scope.minotaur.active = false;
         $scope.playersArray[3].stepPosition = $scope.playersArray[3].start;
         $scope.playersArray[$scope.activePlayer].active = false;
+        $scope.minotaurMoves = 0;
       }
     } else if ($scope.minotaurMoves == 0) {
 
