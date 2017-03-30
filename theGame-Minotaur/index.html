@@ -57,6 +57,7 @@
 				<div id="audio">
 					<audio id="dropDice" src="sounds/dropDice.ogg"></audio>
 					<audio id="step" src="sounds/step.ogg"></audio>
+					<audio id="minoStep" src="sounds/minoStep.ogg"></audio>
 					<audio id="minTurn" src="sounds/minoTurn.ogg"></audio>
 					<audio id="putWall" src="sounds/putWall.ogg"></audio>
 					<audio id="dropWall" src="sounds/dropWall.ogg"></audio>
@@ -80,12 +81,11 @@
 					<div class="prePreHistory" ng-if="stepsHistory[stepsHistory.length - 3] == mapCoors[$index].id" ng-class="[playersArray[activePlayer].color]"></div>
 					<div class="prePreHistory" ng-if="stepsHistory[stepsHistory.length - 4] == mapCoors[$index].id" ng-class="[playersArray[activePlayer].color]"></div>
 					<div class="prePreHistory" ng-if="stepsHistory[stepsHistory.length - 5] == mapCoors[$index].id" ng-class="[playersArray[activePlayer].color]"></div>
-					<div class="prePreHistory" ng-if="stepsHistory[stepsHistory.length - 6] == mapCoors[$index].id" ng-class="[playersArray[activePlayer].color]"></div>
 					<div class="playerBadge" ng-if="playersArray[0].stepPosition == mapCoors[$index].id" ng-class="[playersArray[0].color, {active: playersArray[0].active == true}]"></div>
 					<div class="playerBadge" ng-if="playersArray[1].stepPosition == mapCoors[$index].id" ng-class="[playersArray[1].color, {active: playersArray[1].active == true}]"></div>
 					<div class="playerBadge" ng-if="playersArray[2].stepPosition == mapCoors[$index].id" ng-class="[playersArray[2].color, {active: playersArray[2].active == true}]"></div>
 					<div class="playerBadge" ng-if="playersArray[3].stepPosition == mapCoors[$index].id" ng-class="[playersArray[3].color, {active: playersArray[3].active == true}]"></div>
-					<div class="playerBadge" ng-if="minotaur.stepPosition == mapCoors[$index].id" ng-class="[minotaur.color, {active: minotaur.active == true}]"></div>
+					<div class="minotaurBadge" ng-if="minotaur.stepPosition == mapCoors[$index].id" ng-class="[minotaur.color, {active: minotaur.active == true}]">M</div>
 				</div>
 			</div>
 		</div>
