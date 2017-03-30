@@ -13,7 +13,7 @@
 			<div id="navMenu">
 				<div class="playerN" ng-show="playersArray.length < 4" ng-class="hiddenClass">
 					<div class="inputs">
-						<input id="inputPlayerName" type="text" name="playerName" ng-model="newPlayer" placeholder="Введите имя игрока" maxlength="20">
+						<input id="inputPlayerName" type="text" name="playerName" ng-model="newPlayer" placeholder="Введите имя игрока" maxlength="20" pattern="^[a-zA-ZА-Яа-яЁё][A-Za-zА-Яа-яЁё0-9-_\.]{1,20}$">
 						<input id="addButton" type="submit" name="addPlayer" value="Добавить игрока" ng-click="[addNewPlayer(), autoFocus()]" ng-disabled="!newPlayer.length">
 					</div>
 					<div class="changeColors">
