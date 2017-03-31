@@ -1,7 +1,7 @@
-theGame: Minotaur
-version 0.1.0 Beta
+theGame: Minotaur<br>
+version 0.1.0 Beta<br>
 
-powered by AngularJS
-created by EHoT
+powered by AngularJS<br>
+created by EHoT<br>
 
 Цель: Достинуть героем финишной позиции в центре карты (соответствуюшего цвета) первым.
