@@ -1,4 +1,4 @@
-theGame: Minotaur<br>
+<h2>theGame: Minotaur</h2><br>
 version 0.1.0 Beta<br>
 
 powered by AngularJS<br>
