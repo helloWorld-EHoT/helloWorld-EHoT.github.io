@@ -7,7 +7,11 @@
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body ng-controller="SetPlayersCtrl" ng-keyup="playerMove($event)" ng-cloak>
-
+<div id="preloader" class="preload">
+	<div class="loader">
+		<div class="circle"></div>
+	</div>
+</div>
 	<div id="wrapper">
 		<div id="setPlayers">
 			<div id="navMenu">
