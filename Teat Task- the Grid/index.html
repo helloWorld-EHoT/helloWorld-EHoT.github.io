@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Task: the Grid</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body ng-app="testApp" ng-cloak>
+
+<!--Pre-Loader-->
+
+<div id="preloader" class="preload">
+  <div class="loader">
+    <div class="circle"></div>
+  </div>
+</div>
+<div ng-controller="GridCtrl">
+
+  <!--Table-->
+
+  <table>
+    <!-- Table header -->
+    <thead>
+    <td ng-repeat="header in headerName track by $index"
+        ng-class="header.dataType==='number'?'num-style':'text-style'">{{header.name}}
+    </td>
+    <td class="buttonsCol"><input class="btn" type="submit" ng-click="add()" value="Add +"></td>
+    </thead>
+    <!-- Table body -->
+    <tr ng-repeat="user in Users track by $index">
+      <td>
+        <input type="text" ng-model="user.name" ng-show="user.editable">
+        <p ng-hide="user.editable">{{user.name}}</p>
+      </td>
+      <td>
+        <input type="date" ng-model="user.birthDate" ng-show="user.editable" max="{{dateNow}}">
+        <p ng-hide="user.editable">{{user.visBirthDate}}</p>
+      </td>
+      <td>
+        <p ng-hide="user.editable">{{user.age}}</p>
+      </td>
+      <td class="buttonsCol">
+        <input class="btn editBtn" type="submit" ng-click="edit($index)" ng-hide="user.editable" value="Edit">
+        <input class="btn saveBtn" type="submit" ng-click="check(user.name.length, $index)" ng-show="user.editable"
+               ng-class="user.name.length?'enabledBtn':'disabledBtn'" value="Save">
+        <input class="btn delBtn" type="submit" ng-click="delete($index)" value="Delete">
+      </td>
+    </tr>
+  </table>
+
+  <!--Table end-->
+
+</div>
+<script src="js/angular.min.js"></script>
+<script src="js/ng-main.js"></script>
+</body>
+</html>
