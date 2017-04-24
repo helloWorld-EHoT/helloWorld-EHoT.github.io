@@ -1,5 +1,6 @@
 <a href="helloWorld-EHoT.github.io/theGrid-testTask">the Grid</a>
 Входные данные в формате:
+<code>
 inputData = [
 {
 name: 'Name', //имя столбца *обязательно
@@ -13,4 +14,4 @@ calculateFrom: 'Birth Date', //
 calculate:     'calcAge', // название глобальной функции, которая считает значение для поля dataType:calc,
                           // берет значение из calculateFrom:(имя поля с переменной для расчетов)
 }]; 
-                      
+</code>           
