@@ -1,5 +1,6 @@
-<a href="helloWorld-EHoT.github.io/theGrid-testTask">the Grid</a>
-Входные данные в формате:
+<a href="helloWorld-EHoT.github.io/theGrid-testTask">the Grid</a><br>
+<hr>
+Входные данные в формате:<br>
 inputData = [<br>
 {<br>
 name: 'Name', //имя столбца *обязательно<br>
