@@ -10,7 +10,7 @@
 // * обязательно для поля dataType:enum<br>
 <h4>options: ['', 'Male', 'Female'],</h4> // массив с вариантами выбора, *если dataType:enum<br>
 // * обязательно для поля dataType:calc<br>
-<h4>calculateFrom: 'Birth Date',</h4> // <br>
+<h4>calculateFrom: 'Birth Date',</h4> // имя поля с переменной для расчетов в calculate:<br>
 <h4>calculate:     'calcAge'</h4> // название глобальной функции, которая считает значение для поля dataType:calc,<br>
                           // берет значение из calculateFrom:(имя поля с переменной для расчетов)<br>
 }]; <br>         
