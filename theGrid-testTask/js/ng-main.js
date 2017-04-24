@@ -249,6 +249,7 @@ testApp.controller('GridCtrl', function($scope, inputData, dataTypes) {
       }
     });
     $scope.Users.push(tempObj);
+    $scope.edit($scope.Users.length - 1);
     console.log('users: ', $scope.Users);
     $scope.refreshLocalStorage(); ///////////////+/////////////////
   };
