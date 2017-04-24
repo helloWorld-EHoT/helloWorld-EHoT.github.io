@@ -1,8 +1,8 @@
 <a href="helloWorld-EHoT.github.io/theGrid-testTask">the Grid</a><br>
 <hr>
-Входные данные в формате:<br>
-inputData = [<br>
-{<br>
+<h2>Входные данные в формате:</h2><br>
+<h4>inputData = [</h4><br>
+<h4>{</h4><br>
 <h4>name: 'Name',</h4> //имя столбца *обязательно<br>
 <h4>dataType: 'string',</h4> // 'string'/'int'/'double'/'date'/'datetime'/'time'/'bool'/'enum'/'calc' *обязательно<br>
 <h4>isRequired: true,</h4> // false/true *обязательно<br>
