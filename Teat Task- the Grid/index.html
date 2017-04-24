@@ -14,37 +14,66 @@
     <div class="circle"></div>
   </div>
 </div>
+
 <div ng-controller="GridCtrl">
 
   <!--Table-->
-
   <table>
     <!-- Table header -->
     <thead>
-    <td ng-repeat="header in headerName track by $index"
-        ng-class="header.dataType==='number'?'num-style':'text-style'">{{header.name}}
-    </td>
-    <td class="buttonsCol"><input class="btn" type="submit" ng-click="add()" value="Add +"></td>
+    <tr>
+      <td ng-repeat="header in theGrid">{{header.name}}</td>
+      <td class="buttonsCol">
+        <button class="btn" ng-click="add()">Add +</button>
+      </td>
+    </tr>
     </thead>
     <!-- Table body -->
     <tr ng-repeat="user in Users track by $index">
-      <td>
-        <input type="text" ng-model="user.name" ng-show="user.editable">
-        <p ng-hide="user.editable">{{user.name}}</p>
-      </td>
-      <td>
-        <input type="date" ng-model="user.birthDate" ng-show="user.editable" max="{{dateNow}}">
-        <p ng-hide="user.editable">{{user.visBirthDate}}</p>
-      </td>
-      <td>
-        <p ng-hide="user.editable">{{user.age}}</p>
-      </td>
-      <td class="buttonsCol">
-        <input class="btn editBtn" type="submit" ng-click="edit($index)" ng-hide="user.editable" value="Edit">
-        <input class="btn saveBtn" type="submit" ng-click="check(user.name.length, $index)" ng-show="user.editable"
-               ng-class="user.name.length?'enabledBtn':'disabledBtn'" value="Save">
-        <input class="btn delBtn" type="submit" ng-click="delete($index)" value="Delete">
-      </td>
+      <!--Form-->
+      <form name="userForm">
+        <td ng-repeat="(key, value) in user track by $index"
+            ng-if="['editable', 'index', 'options'].indexOf(key) == -1">
+          <!-- Edit Mode -->
+          <ng-hide ng-hide="key === 'editable'">
+            <!-- Values // Edit Mode OFF -->
+            <ng-hide ng-hide="user.editable">
+              <p ng-if="theGrid[$index].typeOfInput === 'date'">{{user[key] | date:"yyyy-MM-dd"}}</p>
+              <p ng-if="theGrid[$index].typeOfInput === 'datetime-local'">{{user[key] | date:"yyyy-MM-dd HH:mm"}}</p>
+              <p ng-if="theGrid[$index].typeOfInput === 'time'">{{user[key] | date:"HH:mm"}}</p>
+              <p ng-if="['date', 'datetime-local', 'time'].indexOf(theGrid[$index].typeOfInput) == -1">{{user[key]}}</p>
+            </ng-hide>
+            <!-- Values // Edit Mode OFF -->
+            <!---->
+            <!-- Inputs // Edit Mode ON -->
+            <ng-hide ng-hide="!user.editable">
+              <!-- Inputs // Edit Mode -->
+              <input type="{{theGrid[$index].typeOfInput}}" ng-model="user[key]"
+                     ng-required="{{theGrid[$index].isRequired}}"
+                     ng-value="{{user[key]}}" ng-pattern="{{theGrid[$index].pattern}}"
+                     ng-show="user.editable" ng-if="theGrid[$index].typeOfInput !== 'select'">
+              <!-- Select // Edit Mode -->
+              <select name="user[key]" id="user[key]" ng-if="theGrid[$index].typeOfInput === 'select'"
+                      ng-model="user[key]" ng-show="user.editable">
+                <option value="{{option}}" ng-repeat="option in theGrid[$index].options">{{option}}</option>
+              </select>
+              <p ng-show="userForm[key].$invalid && !userForm[key].$pristine"
+                 class="errorForm" ng-if="theGrid[$index].isRequired">*Required!</p>
+            </ng-hide>
+            <!-- Inputs // Edit Mode ON -->
+          </ng-hide>
+        </td>
+        <!---->
+        <td class="buttonsCol">
+          <!--Edit Mode Off-->
+          <button class="btn editBtn" ng-click="edit($index)" ng-hide="user.editable">Edit</button>
+          <button class="btn delBtn" ng-click="delete($index)" ng-hide="user.editable">Delete</button>
+          <!--Edit Mode On-->
+          <button class="btn saveBtn" type="submit" ng-show="user.editable" ng-click="submitForm($index)">Save</button>
+          <button class="btn cancBtn" type="reset" ng-click="cancel($index)" ng-show="user.editable">Cancel</button>
+        </td>
+      </form>
+      <!-- Form end -->
     </tr>
   </table>
 
