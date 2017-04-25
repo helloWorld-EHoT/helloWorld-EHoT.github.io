@@ -1,4 +1,4 @@
-<a href="helloWorld-EHoT.github.io/theGrid-testTask">the Grid</a><br>
+<a href="https://helloworld-ehot.github.io/theGrid-testTask/">the Grid</a><br>
 <hr>
 <h2>Входные данные в формате:</h2><br>
 <h4>inputData = [</h4><br>
