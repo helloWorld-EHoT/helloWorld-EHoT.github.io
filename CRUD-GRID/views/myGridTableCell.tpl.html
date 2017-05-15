@@ -1,0 +1,42 @@
+<div>
+  <!--STRING-->
+  <div ng-if="type === 'string'">
+    {{value}}
+  </div>
+  <!--INT-->
+  <div ng-if="type === 'int'">
+    {{value}}
+  </div>
+  <!--DOUBLE-->
+  <div ng-if="type === 'double'">
+    {{value}}
+  </div>
+  <!--DATE-->
+  <div ng-if="type === 'date'">
+    {{value | gridDateFormat}}
+  </div>
+  <!--DATE-TIME-->
+  <div ng-if="type === 'dateTime'">
+    {{value | date : "dd.MM.yyyy HH:mm"}}
+  </div>
+  <!--TIME-->
+  <div ng-if="type === 'time'">
+    {{value | date : "HH:mm"}}
+  </div>
+  <!--BOOL-->
+  <div ng-if="type === 'bool'">
+    {{value ? 'Yes' : 'No'}}
+  </div>
+  <!--PASSWORD-->
+  <div ng-if="type === 'password'">
+    {{value ? 'Yes' : 'No'}}
+  </div>
+  <!--SELECT-->
+  <div ng-if="type === 'enum'">
+    {{value}}
+  </div>
+  <!--CALCULATE-->
+  <div ng-if="type === 'calc'">
+    {{value ? value : '0'}}
+  </div>
+</div>
