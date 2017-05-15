@@ -1,0 +1,69 @@
+<div>
+  <div class="shadow" ng-show="editMode" ng-click="toggleModal(null)"></div>
+  <div class="shadow" ng-show="deleteMode" ng-click="ask(null)"></div>
+  <!--Pre-Loader-->
+  <div id="preloader" class="preload">
+    <div class="loader">
+      <div class="circle"></div>
+    </div>
+  </div>
+  <!--Wrapper-->
+  <div class="wrapper">
+    <!--<my-table-modal data-item="currentItem" data-fields="fields"></my-table-modal>-->
+
+    <div id="modal-wrapper" ng-class="{'modal-visible': editMode, 'modal-invisible': !editMode}">
+      <div id="modal-header">
+        <h3>{{modalHeader ? 'EDIT MODE' : 'CREATE NEW' }}</h3>
+      </div>
+      <div id="modal-content">
+
+        <form name="myForm">
+          <div ng-repeat="field in fields">
+            <my-table-input data-field="field" data-item="itemToEdit"></my-table-input>
+            <div class="clear"></div>
+          </div>
+          <div class="buttonsCol">
+            <button id="submit" ng-click="save()" ng-disabled="myForm.$invalid">SAVE</button>
+            <button id="reset" ng-click="toggleModal(null)">CANCEL</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+    <div id="del-wrapper" ng-class="{'modal-visible': deleteMode, 'modal-invisible': !deleteMode}">
+      <div id="modal-header">
+        <h3>Are you sure you want to delete?</h3>
+      </div>
+      <div id="modal-content">
+        <div class="buttonsCol">
+          <button id="reset" ng-click="delete()">YES, DELETE IT!</button>
+          <button id="submit" ng-click="ask(null)">NO, CANCEL.</button>
+        </div>
+      </div>
+    </div>
+
+    <table>
+      <!---->
+      <thead>
+      <tr>
+        <th ng-repeat="field in fields">{{field.name | uppercase}}</th>
+        <th><input id="addNew" type="submit" value="Add +" ng-click="toggleModal(null)"></th>
+      </tr>
+      </thead>
+      <!---->
+      <tbody>
+      <tr ng-repeat="item in list track by $index">
+        <td ng-repeat="(key, value) in item">
+          <my-table-cell data-type="fields[$index].dataType" data-value="value"></my-table-cell>
+        </td>
+        <td class="buttons">
+          <button id="editBtn" ng-click="toggleModal($index)">Edit</button>
+          <button id="delBtn" ng-click="ask($index)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+      <!---->
+    </table>
+  </div>
+</div>
