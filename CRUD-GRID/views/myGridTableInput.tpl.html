@@ -1,0 +1,63 @@
+<div>
+  <!--STRING-->
+  <div ng-if="field.dataType === 'string'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <input type="text" id="{{field.name}}" ng-required="{{field.isRequired}}" ng-model="item[field.name]">
+  </div>
+  <!--INT-->
+  <div ng-if="field.dataType === 'int'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <input type="number" id="{{field.name}}" ng-required="{{field.isRequired}}" ng-model="item[field.name]"
+           ng-pattern="\d*">
+  </div>
+  <!--DOUBLE-->
+  <div ng-if="field.dataType === 'double'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <input type="number" id="{{field.name}}" ng-required="{{field.isRequired}}" ng-model="item[field.name]"
+           ng-pattern="/^[+-]?\d+(\.\d+)?$/">
+  </div>
+  <!--DATE-->
+  <div ng-if="field.dataType === 'date'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <input type="date" id="{{field.name}}" ng-required="{{field.isRequired}}"
+           value="{{item[field.name] | date : 'yyyy-MM-dd'}}" ng-model="item[field.name]">
+  </div>
+  <!--DATE-TIME-->
+  <div ng-if="field.dataType === 'dateTime'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <input type="datetime-local" id="{{field.name}}" ng-required="{{field.isRequired}}"
+           value="{{item[field.name] | date : 'yyyy-MM-ddThh:mm'}}" ng-model="item[field.name]">
+  </div>
+  <!--TIME-->
+  <div ng-if="field.dataType === 'time'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <input type="time" id="{{field.name}}" ng-required="{{field.isRequired}}"
+           value="{{item[field.name] | date : 'HH:mm'}}" ng-model="item[field.name]">
+  </div>
+  <!--BOOL-->
+  <div ng-if="field.dataType === 'bool'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <input type="checkbox" id="{{field.name}}" ng-required="{{field.isRequired}}" ng-model="item[field.name]">
+  </div>
+  <!--PASSWORD-->
+  <div ng-if="field.dataType === 'password'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <button class="showHide" ng-click="showHidePassword()">{{showPassword ? 'hide' : 'show'}}</button>
+    <input class="passwordField" type="{{showPassword ? 'text' : 'password'}}" id="{{field.name}}"
+           ng-required="{{field.isRequired}}"
+           ng-model="item[field.name]">
+  </div>
+  <!--CALCULATE-->
+  <div ng-if="field.dataType === 'calc'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <input type="hidden" id="{{field.name}}" ng-required="{{field.isRequired}}" ng-model="item[field.name]">
+  </div>
+  <!--SELECT-->
+  <div ng-if="field.dataType === 'enum'">
+    <label for="{{field.name}}">{{field.name | uppercase}}</label>
+    <select name="{{field.name}}" id="{{field.name}}" ng-required="{{field.isRequired}}"
+            ng-model="item[field.name]">
+      <option ng-repeat="value in field.options" value="{{value}}">{{value}}</option>
+    </select>
+  </div>
+</div>
