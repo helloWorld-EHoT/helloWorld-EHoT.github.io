@@ -17,11 +17,14 @@ testApplication.controller('TestController', function($scope, $http) {
         $scope.fields = response.data;
         console.log('fields-response:', $scope.fields);
       });
-  // $http.get("json/inputData.json")
-  //     .then(function(response) {
-  //       $scope.list = response.data;
-  //       console.log('list-response:', $scope.list);
-  //     });
+  $scope.loadDataExample = function() {
+    $http.get("json/inputData.json")
+        .then(function(response) {
+          $scope.list = response.data;
+          console.log('list-response:', $scope.list);
+        });
+  }
+
 
 });
 
