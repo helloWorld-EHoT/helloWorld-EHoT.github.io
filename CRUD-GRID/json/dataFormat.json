@@ -1,0 +1,24 @@
+[
+  {
+    "name":       "Login",
+    "dataType":   "string",
+    "isRequired": true
+  },
+  {
+    "name":       "Password",
+    "dataType":   "password",
+    "isRequired": true
+  },
+  {
+    "name":       "BirthDate",
+    "dataType":   "date",
+    "isRequired": false
+  },
+  {
+    "name":          "Age",
+    "dataType":      "calc",
+    "isRequired":    false,
+    "calculateFrom": "BirthDate",
+    "calculate":     "calcAge"
+  }
+]
