@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="testApplication">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/angular.min.js"></script>
+</head>
+<body ng-controller="TestController">
+
+<my-table data-fields="fields" data-list="list"></my-table>
+<div class="admin">
+  <p>Admin Mode</p>
+  <button ng-click="clearLocalStorage()">LocalStorage = clear</button>
+  <button ng-click="logConsole(list, 'list')">LOG = list</button>
+  <button ng-click="logConsole(fields, 'fields')">LOG = fields</button>
+</div>
+<script src="main.js"></script>
+<script src="directives.js"></script>
+</body>
+</html>
