@@ -462,7 +462,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var UsersListComponent = /** @class */ (function () {
     function UsersListComponent(dataService) {
         this.dataService = dataService;
-        this.usersCount = 15;
+        this.usersCount = 5;
         this.addFormState = false;
         this.listHeaders = [
             'last',
